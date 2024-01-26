@@ -11,7 +11,7 @@
 
 def minOperations(n):
     # Vérifie si n est inférieur ou égal à zéro
-    if  n <= 0:
+    if n <= 0:
         return 0
 
     # Initialise le nombre total d'opérations et le facteur courant à 2
