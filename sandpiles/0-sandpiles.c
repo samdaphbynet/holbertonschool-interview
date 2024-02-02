@@ -70,7 +70,6 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
     int i, j;
     int sum[3][3];
 
-    // Perform element-wise addition
     for (i = 0; i < 3; i++)
     {
         for (j = 0; j < 3; j++)
@@ -79,13 +78,11 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
         }
     }
 
-    // Perform toppling until stable
     while (!is_stable(sum))
     {
         printf("=\n");
         print_grid(sum);
 
-        // Topple each cell as needed
         for (i = 0; i < 3; i++)
         {
             for (j = 0; j < 3; j++)
@@ -96,7 +93,6 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
         }
     }
 
-    // Copy the stable result back to grid1
     for (i = 0; i < 3; i++)
     {
         for (j = 0; j < 3; j++)
