@@ -6,52 +6,53 @@
  *  Return: 1 if is palindrome or 0 if not
  */
 
-int is_palindrome(listint_t **head) {
-    if (*head == NULL || (*head)->next == NULL) {
-        return 1; // An empty list or a list with only one node is considered a palindrome
-    }
+int is_palindrome(listint_t **head)
+{
+	int *array = NULL, size = 0, i = 0;
+	listint_t *mover = NULL;
 
-    listint_t *slow = *head;
-    listint_t *fast = *head;
-    listint_t *prev;
-    listint_t *current;
-    listint_t *p1;
-    listint_t *p2;
+	if (head == NULL)
+		return (0);
+	if (*head == NULL)
+		return (1);
+	size = list_length(*head);
+	array = malloc(sizeof(int) * size);
+	if (array == NULL)
+		return (0);
+	mover = *head;
+	for (i = 0; i < size; i++)
+	{
+		array[i] = mover->n;
+		mover = mover->next;
+	}
+	for (i = 0; i < (size / 2); i++)
+	{
+		if (array[i] != array[size - 1 - i])
+		{
+			free(array);
+			return (0);
+		}
+	}
+	free(array);
+	return (1);
+}
 
-    while (fast->next != NULL && fast->next->next != NULL) {
-        slow = slow->next;
-        fast = fast->next->next;
-    }
+/**
+ * list_length - returns the length of a singly linked list
+ * @head: pointer to the head of the list
+ *
+ * Returns: length of the list
+ */
 
-    prev = NULL;
-    current = slow->next;
-    while (current != NULL) {
-        listint_t *next = current->next;
-        current->next = prev;
-        prev = current;
-        current = next;
-    }
-    slow->next = prev;
+int list_length(listint_t *head)
+{
+	listint_t *mover = head;
+	int size = 0;
 
-    p1 = *head;
-    p2 = slow->next;
-    while (p2 != NULL) {
-        if (p1->n != p2->n) {
-            return 0;
-        }
-        p1 = p1->next;
-        p2 = p2->next;
-    }
-
-    current = slow->next;
-    prev = NULL;
-    while (current != NULL) {
-        listint_t *next = current->next;
-        current->next = prev;
-        prev = current;
-        current = next;
-    }
-    slow->next = prev;
-
-    return 1;
+	while(mover)
+	{
+		size++;
+		mover = mover->next;
+	}
+	return (size);
 }
