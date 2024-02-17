@@ -1,42 +1,44 @@
 #!/usr/bin/python3
 import sys
-import signal
-import re
 
 
-def print_stats(file_size, status_codes):
-    print("File size: {}".format(file_size))
-    for code in sorted(status_codes.keys()):
-        print("{}: {}".format(code, status_codes[code]))
+if __name__ == "__main__":
+    st_code = {"200": 0,
+               "301": 0,
+               "400": 0,
+               "401": 0,
+               "403": 0,
+               "404": 0,
+               "405": 0,
+               "500": 0}
+    count = 1
+    file_size = 0
 
+    def parse_line(line):
+        """ Read, parse and grab data"""
+        try:
+            parsed_line = line.split()
+            status_code = parsed_line[-2]
+            if status_code in st_code.keys():
+                st_code[status_code] += 1
+            return int(parsed_line[-1])
+        except Exception:
+            return 0
 
-def signal_handler(sig, frame):
-    print_stats(file_size, status_codes)
-    sys.exit(0)
+    def print_stats():
+        """print stats in ascending order"""
+        print("File size: {}".format(file_size))
+        for key in sorted(st_code.keys()):
+            if st_code[key]:
+                print("{}: {}".format(key, st_code[key]))
 
-
-file_size = 0
-status_codes = {str(code): 0 for code in [
-    200, 301, 400, 401, 403, 404, 405, 500]}
-line_count = 0
-
-signal.signal(signal.SIGINT, signal_handler)
-
-for line in sys.stdin:
     try:
-        parts = re.search(
-            r'(\d+\.\d+\.\d+\.\d+) - \[(.+)\] "GET /projects/260 HTTP/1.1" (\d+) (\d+)', line)
-        if parts is None:
-            continue
-        status_code = parts.group(3)
-        size = int(parts.group(4))
-        file_size += size
-        if status_code in status_codes:
-            status_codes[status_code] += 1
-        line_count += 1
-        if line_count % 10 == 0:
-            print_stats(file_size, status_codes)
-    except Exception as e:
-        continue
-
-print_stats(file_size, status_codes)
+        for line in sys.stdin:
+            file_size += parse_line(line)
+            if count % 10 == 0:
+                print_stats()
+            count += 1
+    except KeyboardInterrupt:
+        print_stats()
+        raise
+    print_stats()
