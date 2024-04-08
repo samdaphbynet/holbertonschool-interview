@@ -2,6 +2,7 @@
 
 import sys
 
+
 def print_board(board):
     """ print_board
     Args:
