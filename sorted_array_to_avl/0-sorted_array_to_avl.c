@@ -30,15 +30,12 @@ avl_t* sorted_array_to_avl_helper(int* array, int start, int end) {
     if (start > end)
         return NULL;
 
-    // Find middle element of the array
     int mid = start + (end - start) / 2;
 
-    // Create root node
     avl_t* root = createNode(array[mid]);
     if (root == NULL)
         return NULL;
 
-    // Recursively construct left and right subtrees
     root->left = sorted_array_to_avl_helper(array, start, mid - 1);
     if (root->left != NULL)
         root->left->parent = root;
@@ -62,6 +59,5 @@ avl_t* sorted_array_to_avl(int* array, size_t size) {
     if (array == NULL || size == 0)
         return NULL;
 
-    // Call helper function to recursively build AVL tree
     return sorted_array_to_avl_helper(array, 0, size - 1);
 }
