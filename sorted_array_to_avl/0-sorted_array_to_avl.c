@@ -3,12 +3,14 @@
 /**
  * createNode - Function that creates a new node
  *
- * @data: the new AVL tree node 
+ * @data: the new AVL tree node
  * Return: new node
  */
-avl_t* createNode(int data) {
-    avl_t* newNode = (avl_t*)malloc(sizeof(avl_t));
-    if (newNode) {
+avl_t *createNode(int data)
+{
+    avl_t *newNode = (avl_t *)malloc(sizeof(avl_t));
+    if (newNode)
+    {
         newNode->n = data;
         newNode->left = newNode->right = NULL;
         newNode->parent = NULL;
@@ -16,23 +18,23 @@ avl_t* createNode(int data) {
     return newNode;
 }
 
-
 /**
  * sorted_array_to_avl_helper - Function to build AVL tree from sorted array
  *
  * @array: array to build
  * @start: start index
- * @and: end index
+ * @end: end index
  *
  * Return: array containing the sorted array
  */
-avl_t* sorted_array_to_avl_helper(int* array, int start, int end) {
+avl_t *sorted_array_to_avl_helper(int *array, int start, int end)
+{
     int mid;
-    avl_t* root;
+    avl_t *root;
 
     if (start > end)
         return NULL;
-    
+
     mid = start + (end - start) / 2;
 
     root = createNode(array[mid]);
@@ -49,7 +51,6 @@ avl_t* sorted_array_to_avl_helper(int* array, int start, int end) {
     return root;
 }
 
-
 /**
  * sorted_array_to_avl - Main function to build AVL tree from sorted array
  *
@@ -58,7 +59,8 @@ avl_t* sorted_array_to_avl_helper(int* array, int start, int end) {
  *
  * Return: array containing the sorted array
  */
-avl_t* sorted_array_to_avl(int* array, size_t size) {
+avl_t *sorted_array_to_avl(int *array, size_t size)
+{
     if (array == NULL || size == 0)
         return NULL;
 
