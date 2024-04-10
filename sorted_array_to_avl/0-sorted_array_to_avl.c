@@ -27,14 +27,15 @@ avl_t* createNode(int data) {
  * Return: array containing the sorted array
  */
 avl_t* sorted_array_to_avl_helper(int* array, int start, int end) {
+    int mid;
+    avl_t* root;
+
     if (start > end)
         return NULL;
     
-    int mid;
-
     mid = start + (end - start) / 2;
 
-    avl_t* root = createNode(array[mid]);
+    root = createNode(array[mid]);
     if (root == NULL)
         return NULL;
 
