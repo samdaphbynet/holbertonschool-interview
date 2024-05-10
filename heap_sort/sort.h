@@ -11,4 +11,4 @@ void heapify(int *array, size_t size);
 void sift_down(int *array, size_t size, size_t root, size_t max);
 int main(void);
 
-#endif // SORT_H
+#endif /* SORT_H */
