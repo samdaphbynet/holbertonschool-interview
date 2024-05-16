@@ -20,41 +20,35 @@
  */
 int advanced_binary(int *array, size_t size, int value)
 {
-    size_t i, mid;
-    int result;
+	size_t i = 0;
+    int middle = ((size - 1) / 2);
+	int result = 0;
 
-    if (array == NULL)
+	if (array == NULL || size < 1)
+		return (-1);
+
+	printf("Searching in array: ");
+	for (i = 0; i < size; i++){
+        printf("%d", array[i]);
+        if (i != (size - 1))
+            printf(", ");
+        else 
+            printf("\n");
+    }
+
+	if (array[middle] == value && middle == 0) {
+        return (middle);
+    }else if (size == 1) {
         return (-1);
-
-    printf("Searching in array:");
-    for (i = 0; i < size; ++i)
-    {
-        printf(" %d", array[i]);
-        if (i < size - 1)
-            printf(",");
     }
-    printf("\n");
 
-    if (size == 1 && array[0] != value)
+	if (array[middle] >= value)
+        return (advanced_binary(array, middle + 1, value));
+    
+    middle++;
+    result = advanced_binary(&array[middle], size - middle, value);
+
+	if (result == -1)
         return (-1);
-
-    mid = size / 2;
-
-    if (array[mid] == value)
-    {
-        if (size % 2 == 0)
-            return (mid - 1);
-        return (mid);
-    }
-    else if (array[mid] > value)
-    {
-        result = advanced_binary(array, mid, value);
-    }
-    else
-    {
-        result = advanced_binary(array + mid + 1, size - mid - 1, value);
-        if (result != -1)
-            result += mid + 1;
-    }
-    return (result);
+    return (result + middle);
 }
