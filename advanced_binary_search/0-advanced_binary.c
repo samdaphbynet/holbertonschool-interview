@@ -5,17 +5,17 @@
 
 
 /**
- * @brief Performs an advanced binary search on a sorted array.
+ * advanced_binary - Performs an advanced binary search on a sorted array.
  *
  * This function implements an advanced binary search algorithm that prints the
  * portion of the array being searched at each step. It returns the index of the
  * first occurrence of the target value if found, or -1 if not found.
  *
- * @param array The sorted array to search in.
- * @param size The size of the array.
- * @param value The target value to search for.
+ * @array: The sorted array to search in.
+ * @size: The size of the array.
+ * @value: The target value to search for.
  *
- * @return The index of the first occurrence of the target value in the array,
+ * Return: The index of the first occurrence of the target value in the array,
  *         or -1 if not found.
  */
 int advanced_binary(int *array, size_t size, int value)
