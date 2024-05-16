@@ -18,30 +18,43 @@
  * @return The index of the first occurrence of the target value in the array,
  *         or -1 if not found.
  */
-int advanced_binary(int *array, size_t size, int value) {
-    int middle = size / 2;
-    int left = 0;
-    int right = size - 1;
-    int i;
-    
-    while (left <= right) {
-        printf("Searching in array: ");
-        for (i = left; i <= right; i++) {
-            printf("%d ", array[i]);
-        }
-        printf("\n");
-        
-        if (array[middle] == value) {
-            return middle;
-        } else if (array[middle] > value) {
-            right = middle - 1;
-        } else {
-            left = middle + 1;
-        }
-        
-        middle = (left + right) / 2;
-    
-    }
+int advanced_binary(int *array, size_t size, int value)
+{
+    size_t i, mid;
+    int result;
 
-    return -1;
+    if (array == NULL)
+        return (-1);
+
+    printf("Searching in array:");
+    for (i = 0; i < size; ++i)
+    {
+        printf(" %d", array[i]);
+        if (i < size - 1)
+            printf(",");
+    }
+    printf("\n");
+
+    if (size == 1 && array[0] != value)
+        return (-1);
+
+    mid = size / 2;
+
+    if (array[mid] == value)
+    {
+        if (size % 2 == 0)
+            return (mid - 1);
+        return (mid);
+    }
+    else if (array[mid] > value)
+    {
+        result = advanced_binary(array, mid, value);
+    }
+    else
+    {
+        result = advanced_binary(array + mid + 1, size - mid - 1, value);
+        if (result != -1)
+            result += mid + 1;
+    }
+    return (result);
 }
