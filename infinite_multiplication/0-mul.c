@@ -62,7 +62,7 @@ void multiply(char *num1, char *num2) {
         }
     }
 
-    int i = 0;
+    i = 0;
     while (i < len_res && result[i] == 0) {
         i++;
     }
