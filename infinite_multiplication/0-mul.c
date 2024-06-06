@@ -3,7 +3,12 @@
 #include <string.h>
 #include <ctype.h>
 
-// Function to print error message and exit with status 98
+
+/**
+ * error_and_exit - Function to handle errors and exit the program.
+ *
+ * This function prints an error message and exits the program with a status code of 98.
+ */
 void error_and_exit() {
     printf("Error\n");
     exit(98);
