@@ -41,7 +41,7 @@ int is_digit_string(char *str) {
  * @num1: The first number as a string.
  * @num2:The second number as a string.
  *
- * Return The product of the two numbers as a string.
+ * Return: The product of the two numbers as a string.
  */
 void multiply(char *num1, char *num2) {
     int i, j;
@@ -88,7 +88,7 @@ void multiply(char *num1, char *num2) {
  * @argv: An array of strings, where the first two elements are the command-line
  * arguments representing the numbers to be multiplied.
  *
- * Return 0 if the program runs successfully, 98 otherwise.
+ * Return: 0 if the program runs successfully, 98 otherwise.
  */
 int main(int argc, char *argv[]) {
     if (argc != 3) {
