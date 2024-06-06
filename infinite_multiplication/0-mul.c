@@ -22,7 +22,8 @@ void error_and_exit() {
  * Return: 1 if number, 0 if not
  */
 int is_digit_string(char *str) {
-    for (int i = 0; str[i]; i++) {
+    int i;
+    for (i = 0; str[i]; i++) {
         if (!isdigit(str[i])) {
             return 0;
         }
@@ -43,6 +44,7 @@ int is_digit_string(char *str) {
  * Return The product of the two numbers as a string.
  */
 void multiply(char *num1, char *num2) {
+    int i, j;
     int len1 = strlen(num1);
     int len2 = strlen(num2);
     int len_res = len1 + len2;
@@ -51,8 +53,8 @@ void multiply(char *num1, char *num2) {
         error_and_exit();
     }
 
-    for (int i = len1 - 1; i >= 0; i--) {
-        for (int j = len2 - 1; j >= 0; j--) {
+    for (i = len1 - 1; i >= 0; i--) {
+        for (j = len2 - 1; j >= 0; j--) {
             int mul = (num1[i] - '0') * (num2[j] - '0');
             int sum = mul + result[i + j + 1];
             result[i + j + 1] = sum % 10;
