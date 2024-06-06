@@ -9,7 +9,13 @@ void error_and_exit() {
     exit(98);
 }
 
-// Function to check if a string is composed only of digits
+/**
+ * is_digit_string - checks if string is number
+ *
+ * @str: string
+ *
+ * Return: 1 if number, 0 if not
+ */
 int is_digit_string(char *str) {
     for (int i = 0; str[i]; i++) {
         if (!isdigit(str[i])) {
@@ -19,7 +25,18 @@ int is_digit_string(char *str) {
     return 1;
 }
 
-// Function to multiply two large numbers represented as strings
+
+/**
+ * multiply - two numbers represented as strings.
+ *
+ * This function takes two strings representing numbers and multiplies them.
+ * The result is also returned as a string.
+ *
+ * @num1: The first number as a string.
+ * @num2:The second number as a string.
+ *
+ * Return The product of the two numbers as a string.
+ */
 void multiply(char *num1, char *num2) {
     int len1 = strlen(num1);
     int len2 = strlen(num2);
@@ -55,6 +72,17 @@ void multiply(char *num1, char *num2) {
     free(result);
 }
 
+/**
+ * main - function that takes two command-line arguments representing numbers,
+ * checks if they are valid digits, and then calls the multiply function to compute
+ * their product.
+ *
+ * @argc: The number of arguments passed to the program.
+ * @argv: An array of strings, where the first two elements are the command-line
+ * arguments representing the numbers to be multiplied.
+ *
+ * Return 0 if the program runs successfully, 98 otherwise.
+ */
 int main(int argc, char *argv[]) {
     if (argc != 3) {
         error_and_exit();
