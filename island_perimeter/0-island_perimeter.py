@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-
 """
 island_perimeter: Calculates the perimeter of an island in a 2D grid.
 """
+
+
 def island_perimeter(grid):
     """
     Calculates the perimeter of an island in a 2D grid.
@@ -21,10 +22,12 @@ def island_perimeter(grid):
 
                 # Check if there's a cell above
                 if i > 0 and grid[i - 1][j] == 1:
-                    perimeter -= 2  # Subtract 2 sides since they are counted twice
+                    # Subtract 2 sides since they are counted twice
+                    perimeter -= 2
 
                 # Check if there's a cell to the left
                 if j > 0 and grid[i][j - 1] == 1:
-                    perimeter -= 2  # Subtract 2 sides since they are counted twice
+                    # Subtract 2 sides since they are counted twice
+                    perimeter -= 2
 
     return perimeter
