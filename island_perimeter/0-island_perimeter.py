@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
-
+"""
+island_perimeter: Calculates the perimeter of an island in a 2D grid.
+"""
 def island_perimeter(grid):
     """
     Calculates the perimeter of an island in a 2D grid.
