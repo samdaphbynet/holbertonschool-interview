@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-Returns a list of lists representing the first 'n' lines of Pascal's Triangle.
+pascal_Triangle.
 '''
 
 
