@@ -1,13 +1,11 @@
 #!/usr/bin/python3
-"""
+'''
 Returns a list of lists representing the first 'n' lines of Pascal's Triangle.
-"""
+'''
 
 
 def pascal_triangle(n):
-    """
-    Generates Pascal's Triangle up to the 'n' line.
-    """
+    ''' Generates Pascal's Triangle up to the 'n' line. '''
     triangle = []
     for i in range(n):
         row = [1]
