@@ -5,7 +5,7 @@ pascal_Triangle.
 
 
 def pascal_triangle(n):
-    ''' Generates Pascal's Triangle up to the 'n' line. '''
+    ''' Generates Pascal Triangle up to the n line. '''
     triangle = []
     for i in range(n):
         row = [1]
